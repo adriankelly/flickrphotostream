@@ -13,12 +13,10 @@ export function photosIsLoading(isLoading) {
 }
 
 // API data passed in as json
-export function receivePhotosSuccess(photos, data) {
+export function receivePhotosSuccess(photos) {
   return {
     type: 'RECEIVE_PHOTOS_SUCCESS',
-    photos,
-    photoData: data.items.map(child => child.data),
-    receivedAt: Date.now()
+    photos
     }
 }
 
@@ -39,9 +37,8 @@ export function fetchPhotos(url) {
         dataType: 'jsonp'
     })
       .then((response) => {
-        console.log(response);
         dispatch(photosIsLoading(false))
-        dispatch(receivePhotosSuccess(true, response))
+        dispatch(receivePhotosSuccess(response.items))
       })
       .catch(() => dispatch(photosHasErrored(true)));
   }

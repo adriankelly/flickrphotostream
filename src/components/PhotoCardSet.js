@@ -11,8 +11,9 @@ class PhotoCardSet extends Component {
   render() {
     return (
       <div>
-        Hello from PhotoCardSet
-        <PhotoCard />
+        {this.props.photos.map((photo, index) => (
+            <PhotoCard photo={photo} key={index} />
+        ))}
       </div>
     )
   }

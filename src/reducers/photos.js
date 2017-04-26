@@ -19,7 +19,7 @@ export function photosIsLoading(state = false, action) {
 export function photos(state = [], action) {
   switch (action.type) {
     case 'RECEIVE_PHOTOS_SUCCESS':
-      return action.photoData;
+      return action.photos;
     default:
       return state;
   }

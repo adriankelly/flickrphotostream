@@ -5,10 +5,10 @@ import './PhotoCard.css';
 const PhotoCard = (props) => {
   return (
     <div className="photocard">
-        <img src="https://dummyimage.com/140x110/ccc/000.jpg" alt=""/>
-        <span><a href="">Title</a> by <a href=""><small>AuthorFirst AuthorLast</small></a></span>
-        <p>Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex unde ad dicta, pariatur, fugiat facilis hic ullam rerum repellendus accusamus cumque aut quidem dolores, voluptate provident dignissimos impedit asperiores quaerat.</p>
-        <span>Tags: voluptate provident dignissimos impedit asperiores quaerat</span>
+        <img src={props.photo.media.m} alt=""/>
+        <span><a href="">{props.photo.title}</a> by <a href=""><small>{props.photo.author.match(/"([^"]*)"/)[1]}</small></a></span>
+        <p>Description: {props.photo.description.replace(/<[^>]*>/g, '')}</p>
+        <span>Tags: {props.photo.tags}</span>
     </div>
   )
 }
