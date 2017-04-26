@@ -1,3 +1,4 @@
+import $ from 'jquery';
 /**
  * Action Creators
  */
@@ -12,11 +13,11 @@ export function photosIsLoading(isLoading) {
 }
 
 // API data passed in as json
-export function receivePhotosSuccess(photos, json) {
+export function receivePhotosSuccess(photos, data) {
   return {
     type: 'RECEIVE_PHOTOS_SUCCESS',
     photos,
-    photoData: json.data.children.map(child => child.data),
+    photoData: data.items.map(child => child.data),
     receivedAt: Date.now()
     }
 }
@@ -32,12 +33,15 @@ export function fetchPhotos(url) {
 
     dispatch(photosIsLoading(true));
 
-    fetch(url) //test with github api
-      .then(response => response.json())
-      .then((json) => {
-        console.log(json);
+// Public Flickr API at provided URL not supporting CORS
+// Using JSONP instead of fetch()
+    $.ajax(url + '&jsoncallback=?', {
+        dataType: 'jsonp'
+    })
+      .then((response) => {
+        console.log(response);
         dispatch(photosIsLoading(false))
-        dispatch(receivePhotosSuccess(true, json))
+        dispatch(receivePhotosSuccess(true, response))
       })
       .catch(() => dispatch(photosHasErrored(true)));
   }

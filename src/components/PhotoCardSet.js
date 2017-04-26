@@ -5,9 +5,9 @@ import { fetchPhotos } from '../actions/photos';
 
 class PhotoCardSet extends Component {
   componentDidMount() {
-    this.props.fetchData('https://api.github.com');
+    this.props.fetchData('https://api.flickr.com/services/feeds/photos_public.gne?format=json');
   }
-  
+
   render() {
     return (
       <div>
