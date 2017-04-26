@@ -27,18 +27,18 @@ export function receivePhotosSuccess(photos, json) {
  * Returns function allowing for asynchronous API calls
  * Also dispatching synchronous Action Creators defined above
  */
-export function fetchPhotos() {
+export function fetchPhotos(url) {
   return (dispatch) => {
 
     dispatch(photosIsLoading(true));
 
-    return fetch('https://api.github.com') //test with github api
+    fetch(url) //test with github api
       .then(response => response.json())
-      .then(json => {
+      .then((json) => {
         console.log(json);
         dispatch(photosIsLoading(false))
-        dispatch(receivePhotosSuccess(photos, json))
+        dispatch(receivePhotosSuccess(true, json))
       })
-      .catch(() => dispatch(photosHasErrored(hasErrored)));
+      .catch(() => dispatch(photosHasErrored(true)));
   }
 }
