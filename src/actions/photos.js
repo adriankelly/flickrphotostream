@@ -12,11 +12,11 @@ export function photosIsLoading(isLoading) {
 }
 
 // API data passed in as json
-export function receivePhotos(photos, json) {
+export function receivePhotosSuccess(photos, json) {
   return {
-    type: 'RECEIVE_PHOTOS',
+    type: 'RECEIVE_PHOTOS_SUCCESS',
     photos,
-    data: json.data.children.map(child => child.data),
+    photoData: json.data.children.map(child => child.data),
     receivedAt: Date.now()
     }
 }
@@ -37,7 +37,7 @@ export function fetchPhotos() {
       .then(json => {
         console.log(json);
         dispatch(photosIsLoading(false))
-        dispatch(receivePhotos(photos, json))
+        dispatch(receivePhotosSuccess(photos, json))
       })
       .catch(() => dispatch(photosHasErrored(hasErrored)));
   }
