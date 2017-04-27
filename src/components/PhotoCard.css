@@ -1,3 +1,6 @@
 .photocard {
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  height: 400px;
+  overflow: hidden;
+  word-wrap: break-word;
+  box-shadow: 1px 1px 5px rgb(200, 200, 200);
 }

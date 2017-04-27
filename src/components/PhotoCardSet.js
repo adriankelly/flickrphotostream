@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PhotoCard from './PhotoCard';
 import { connect } from 'react-redux';
 import { fetchPhotos } from '../actions/photos';
+import { Row } from 'react-bootstrap';
+
 
 class PhotoCardSet extends Component {
   componentDidMount() {
@@ -10,11 +12,11 @@ class PhotoCardSet extends Component {
 
   render() {
     return (
-      <div>
+      <Row>
         {this.props.photos.map((photo, index) => (
             <PhotoCard photo={photo} key={index} />
         ))}
-      </div>
+     </Row>
     )
   }
 }
