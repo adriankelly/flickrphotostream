@@ -1,6 +1,14 @@
 .photocard {
   height: 400px;
   overflow: hidden;
-  word-wrap: break-word;
   box-shadow: 1px 1px 5px rgb(200, 200, 200);
+}
+
+.photocard__title {
+  display: block;
+  padding-top: 10px;
+}
+
+.photocard__description {
+  padding-top: 15px;
 }
