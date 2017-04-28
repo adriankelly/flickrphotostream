@@ -5,7 +5,7 @@ const FilterForm = (props) => {
   return (
     <Col xs={12} md={5}>
       <FormGroup>
-        <ControlLabel>Type a tag name to filter results...</ControlLabel>
+        <ControlLabel>Start typing a tag name to filter results...</ControlLabel>
         <FormControl 
           type="text"
           onChange={props.onChange}
