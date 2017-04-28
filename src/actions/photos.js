@@ -1,7 +1,6 @@
 import $ from 'jquery';
-/**
- * Action Creators
- */
+
+/* Action Creators */
 
 // hasErrored and isLoading receive boolean values
 export function photosHasErrored(hasErrored) {
@@ -14,10 +13,11 @@ export function photosIsLoading(isLoading) {
 
 // API data passed in as json
 export function receivePhotosSuccess(photos) {
-  return {
-    type: 'RECEIVE_PHOTOS_SUCCESS',
-    photos
-    }
+  return { type: 'RECEIVE_PHOTOS_SUCCESS', photos }
+}
+
+export function isFiltering(filterTerm) {
+  return { type: 'IS_FILTERING', filterTerm }
 }
 
 
@@ -28,18 +28,17 @@ export function receivePhotosSuccess(photos) {
  */
 export function fetchPhotos(url) {
   return (dispatch) => {
-
     dispatch(photosIsLoading(true));
 
-// Public Flickr API at provided URL not supporting CORS
-// Using JSONP instead of fetch()
+    // Public Flickr API at provided URL not supporting CORS
+    // Using JSONP instead of fetch()
     $.ajax(url + '&jsoncallback=?', {
         dataType: 'jsonp'
     })
-      .then((response) => {
-        dispatch(photosIsLoading(false))
-        dispatch(receivePhotosSuccess(response.items))
-      })
-      .catch(() => dispatch(photosHasErrored(true)));
+    .then((response) => {
+      dispatch(photosIsLoading(false))
+      dispatch(receivePhotosSuccess(response.items))
+    })
+    .catch(() => dispatch(photosHasErrored(true)));
   }
 }

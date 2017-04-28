@@ -1,3 +1,5 @@
+/* Reducers */
+
 export function photosHasErrored(state = false, action) {
   switch (action.type) {
     case 'PHOTOS_HAS_ERRORED':
@@ -22,5 +24,18 @@ export function photos(state = [], action) {
       return action.photos;
     default:
       return state;
+  }
+}
+
+const initialState = { filterBy: '' };
+
+export function filtering(state = initialState, action) {
+  switch (action.type) {
+    case 'IS_FILTERING':
+      return Object.assign({}, state, {
+        filterBy: action.filterTerm
+      })
+    default:
+      return state
   }
 }

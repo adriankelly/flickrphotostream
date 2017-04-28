@@ -1,24 +1,22 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 import './index.css';
+import WebFont from 'webfontloader';
+import App from './App';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
-import WebFont from 'webfontloader';
 
 WebFont.load({
-  google: {
-    families: ['Roboto:300,400,500', 'sans-serif']
-  }
+  google: { families: ['Roboto:300,400,500', 'sans-serif'] }
 });
 
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-      <App />
+    <App />
   </Provider>,
   document.getElementById('root')
 );
