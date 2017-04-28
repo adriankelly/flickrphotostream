@@ -6,9 +6,8 @@ __Description__: Consumes the public [Flickr API](https://api.flickr.com/service
 First
 
 `$ npm install`
-`$ npm run build`
 
-Now run the app
+Now run the development build of the app
 
 `$ npm start`
 
