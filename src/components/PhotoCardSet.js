@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PhotoCard from './PhotoCard';
+import FilterForm from './FilterForm';
 import { connect } from 'react-redux';
 import { fetchPhotos, isFiltering } from '../actions/photos';
-import { Row, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 class PhotoCardSet extends Component {
   componentDidMount() {
@@ -14,14 +15,10 @@ class PhotoCardSet extends Component {
     
     return (
       <div>
-        <FormGroup>
-          <ControlLabel>Type a tag name to filter results...</ControlLabel>
-          <FormControl 
-            type="text"
-            onChange={updateFiltering}
-          />
-        </FormGroup>
-      
+        <Row>
+          <FilterForm onChange={updateFiltering} />
+        </Row>
+        
         <Row>
           {this.props.photos
             .filter(photo => photo.tags.indexOf(filterBy) > -1)
